@@ -1,8 +1,6 @@
 fertile_file = open("data/fertility.txt", "r")
 lines = fertile_file.readlines()
 fertile_file.close()
-new_file = open("data/FertilityProcessed.txt", "w")
-j = 0
 temp=[]
 fertile = []
 for i in lines:
@@ -21,7 +19,6 @@ for i in lines:
     else:
         temp[9] = 1
     fertile.append(temp)
-    new_file.write(str(temp)+"\n")
     '''
     [0] Season      0 winter,  1 spring,  2 summer,  3 fall
     [1] Age         age (integer)
@@ -34,6 +31,14 @@ for i in lines:
     [8] Sit Hour    hours(integer)
     [9] Result      0 normal, 1 altered
     '''
+new_file = open("data/FertilityProcessed.txt", "w")
+for i in fertile:
+    for j in i:
+        print j
+        new_file.write(str(j))
+        new_file.write(" ")
+    new_file.write('\n')
+
 
 print fertile
 new_file.close()
