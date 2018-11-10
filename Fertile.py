@@ -19,6 +19,18 @@ for i in lines:
         temp[9] = 1
     fertile.append(temp)
     new_file.write(str(temp)+"\n")
+    '''
+    [0] Season      0 winter,  1 spring,  2 summer,  3 fall
+    [1] Age         age (integer)
+    [2] Disease     0 false  1 true
+    [3] Trauma      0 false  1 true
+    [4] Surgical    0 false  1 true
+    [5] Fever       0 less than 3 month,  1 more than 3 months,  2 never
+    [6] Alcohol     1 n/day, 2 1/day, 3 n/week, 4 1/week, 5 never
+    [7] Smoke       0 never, 1 sometime, 2 daily
+    [8] Sit Hour    hours(integer)
+    [9] Result      0 normal, 1 altered
+    '''
 
 
 print fertile
