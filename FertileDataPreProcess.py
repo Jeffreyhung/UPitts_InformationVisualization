@@ -1,7 +1,7 @@
 fertile_file = open("data/fertility.txt", "r")
 lines = fertile_file.readlines()
 fertile_file.close()
-new_file = open("data/processed.txt", "w")
+new_file = open("data/FertilityProcessed.txt", "w")
 j = 0
 temp=[]
 fertile = []
@@ -34,7 +34,6 @@ for i in lines:
     [8] Sit Hour    hours(integer)
     [9] Result      0 normal, 1 altered
     '''
-
 
 print fertile
 new_file.close()
