@@ -1,7 +1,7 @@
 fertile_file = open("data/fertility.txt", "r")
 lines = fertile_file.readlines()
 fertile_file.close()
-new_file = open("processed.txt", "w")
+new_file = open("data/processed.txt", "w")
 j = 0
 temp=[]
 fertile = []
