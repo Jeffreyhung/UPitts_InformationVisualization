@@ -21,12 +21,30 @@ def get_n_item(item):
         temp.append(i[int(item)])
     return temp
 
+def scatterplot(a, b, title="", color = "r"):
+    x_data = get_n_item(a)
+    y_data = get_n_item(b)
+    n_data = get_n_item(9)
+    x_label = nameSet[a]
+    y_label = nameSet[b]
 
-colors = (0,0,0)
-area = np.pi*3
-plt.scatter(get_n_item(1), get_n_item(8), s=area, c=colors, alpha=0.5)
-plt.show()
+    # Create the plot object
+    _, ax = plt.subplots()
 
+    # s size, c color, marker type of dot, alpha transparency
+    ax.scatter(x_data, n_data, s = 10, c = 'red', alpha = 0.3, marker='x', label = x_label)
+    ax.scatter(y_data, n_data, s = 10, c = 'green', alpha = 0.3, marker='o', label = y_label)
+
+    # Label the axes and provide a title
+    title = 'Scatterplot of ',x_label,' and ',y_label
+    ax.set_title(title)
+    ax.set_ylabel(nameSet[9])
+    ax.legend(loc='upper right')
+    plt.show()
+
+
+scatterplot(6,5)
+'''
 def scatterplot(x_data, y_data, x_label="", y_label="", title="", color = "r", yscale_log=False):
     # Create the plot object
     _, ax = plt.subplots()
@@ -42,7 +60,7 @@ def scatterplot(x_data, y_data, x_label="", y_label="", title="", color = "r", y
     ax.set_title(title)
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
-
+'''
 
 '''
 df = pandas.DataFrame(fertile, columns = nameSet)
