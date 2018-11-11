@@ -39,6 +39,4 @@ for i in fertile:
         new_file.write(" ")
     new_file.write('\n')
 
-
-print fertile
 new_file.close()
