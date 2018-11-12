@@ -22,6 +22,36 @@ for i in lines:
             temp[0] = '0'
         temp = organize(temp)
         hypo.append(temp)
+
+    '''
+    [00] Result              0 false  1 true
+    [01] Age                 age (integer)
+    [02] Sex                 0 Female  1 Male
+    [03] on thyroxine        0 false  1 true
+    [04] query on thyroxine  0 false  1 true
+    [05] on Anti-thyroid     0 false  1 true
+    [06] Surgery             0 false  1 true
+    [07] Query Hypothyroid   0 false  1 true
+    [08] Query Hyperthyroid  0 false  1 true
+    [09] Pregnant            0 normal, 1 altered
+    [10] Sick                0 false  1 true
+    [11] Tumor               0 false  1 true
+    [12] Lithium             0 false  1 true
+    [13] Goitre              0 false  1 true
+    
+    [14] TSH    0 false  1 true
+    [15]        Num of TSH / int or '?'
+    [16] T3     0 false  1 true
+    [17]        Num of T3 / int or '?'
+    [18] TT4    0 false  1 true
+    [19]        Num of TT4 / int or '?'
+    [20] T40    0 false  1 true
+    [21]        Num of T40 / int or '?'
+    [22] FTI    0 false  1 true
+    [23]        Num of FTI / int or '?'
+    [24] TBG    0 false  1 true
+    [25]        Num of TBG / int or '?'
+    '''
 # write into new data
 new_file = open("data/HypothyroidProcessed.txt", "w")
 for i in hypo:
