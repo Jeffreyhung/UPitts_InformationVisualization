@@ -1,7 +1,6 @@
 hypo_file = open("data/hypothyroid.data", "r")
 lines = hypo_file.readlines()
 hypo_file.close()
-temp = []
 hypo = []
 
 
@@ -13,7 +12,7 @@ def organize(temp):
     return temp
 
 
-#organize each
+# organize each
 for i in lines:
     temp = (i.rstrip('\n').split(','))
     if (temp[1] != '?') and ( temp[2] != '?'):
@@ -23,7 +22,7 @@ for i in lines:
             temp[0] = '0'
         temp = organize(temp)
         hypo.append(temp)
-
+# write into new data
 new_file = open("data/HypothyroidProcessed.txt", "w")
 for i in hypo:
     for j in i:
