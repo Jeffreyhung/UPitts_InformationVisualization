@@ -70,46 +70,43 @@ def scatter_plot(a, b):
     y_label = nameSet[b]
 # Create the plot object
     fig, ax = plt.subplots()
-# create a list of the sizes, here multiplied by 10 for scale
+# create a list of the sizes, here multiplied by 50 for scale
     c = Counter(zip(x_data_n, y_data_n))
     s = [50 * c[(xx, yy)] for xx, yy in zip(x_data_n, y_data_n)]
 # s size, c color, marker type of dot, alpha transparency
-    ax.scatter(x_data_n, y_data_n, s = s, c = 'blue', alpha = 0.75, marker='o', label = "Normal")
+    ax.scatter(x_data_n, y_data_n, s = s, c = 'blue', alpha = 0.4, marker='o', label = "Normal")
     c = Counter(zip(x_data_a, y_data_a))
     s = [50 * c[(xx, yy)] for xx, yy in zip(x_data_a, y_data_a)]
-    ax.scatter(x_data_a, y_data_a, s = s, c = 'red', alpha = 0.75, marker='s', label = "Altered")
+    ax.scatter(x_data_a, y_data_a, s = s, c = 'red', alpha = 0.4, marker='s', label = "Altered")
 # Label the axes and provide a title
     title = 'Scatterplot of ',x_label,' and ',y_label
     ax.set_title(title)
     ax.set_xlabel(nameSet[a])
     ax.set_ylabel(nameSet[b])
     ax.legend(loc='best', markerscale=0.5, markerfirst=0)
+# Show chart
+    fig.tight_layout()
     plt.show()
 
 
 def bar_chart(dataset1, dataset2):
-# Create the plot object
     fig, ax = plt.subplots()
-
+# parameter setting
     index = np.arange(3)
     bar_width = 0.35
-
     opacity = 0.4
-    error_config = {'ecolor': '0.3'}
-
-    ax.bar(index, dataset1, bar_width, alpha=opacity, color='b', error_kw=error_config, label='Normal')
-    ax.bar(index + bar_width, dataset2, bar_width, alpha=opacity, color='r', error_kw=error_config, label='Altered')
-
-    ax.set_xlabel('Group')
+# input data
+    ax.bar(index, dataset1, bar_width, alpha=opacity, color='b', label='Normal')
+    ax.bar(index + bar_width, dataset2, bar_width, alpha=opacity, color='r', label='Altered')
+# Label the axes
     ax.set_ylabel('Percentage')
     ax.set_xticks(index + bar_width / 2)
     ax.set_xticklabels(('Disease', 'Trauma', 'Surgical'))
     ax.legend()
-
+# Show chart
     fig.tight_layout()
     plt.show()
 
 
 bar_chart(normal_statistic, altered_statistic)
-scatter_plot(2,3)
 scatter_plot(1,8)
