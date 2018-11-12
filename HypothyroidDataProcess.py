@@ -3,19 +3,32 @@ lines = hypo_file.readlines()
 hypo_file.close()
 temp = []
 hypo = []
+
+
+# function for turning things into binary
+def organize(temp):
+    temp = [tem.replace('f', '0').replace('t', '1').replace('M', '1')
+                .replace('F', '0').replace('y', '1').replace('n', '0')
+            for tem in temp]
+    return temp
+
+
+#organize each
 for i in lines:
     temp = (i.rstrip('\n').split(','))
     if (temp[1] != '?') and ( temp[2] != '?'):
-        temp = [t.replace('f', '0') for t in temp]
-        temp = [t.replace('t', '1') for t in temp]
         if temp[0] == 'hypothyroid':
-            temp[0] = 1
+            temp[0] = '1'
         else:
-            temp = 0
+            temp[0] = '0'
+        temp = organize(temp)
         hypo.append(temp)
 
-# words = [w.replace('[br]', '<br />') for w in words]
-
-print hypo
-print len(hypo)
+new_file = open("data/HypothyroidProcessed.txt", "w")
+for i in hypo:
+    for j in i:
+        new_file.write(str(j))
+        new_file.write(" ")
+    new_file.write('\n')
+new_file.close()
 
