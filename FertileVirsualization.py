@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 from collections import Counter
 
 # Read processed file
@@ -23,7 +24,36 @@ for i in fertile:
         normal_data.append(i)
 
 
-# Function for getting every n-th item in fertile
+# count the percentage of disease, trauma and surgical
+def statistic (data, target):
+    for i in data:
+        if i[2]:
+            target[0] += 1
+
+        if i[3]:
+            target[1] += 1
+
+        if i[4]:
+            target[2] += 1
+
+    for i in range(3):
+        target[i] = (target[i]*100/len(data))
+
+
+# Sum the number of disease, trauma and surgical
+normal_statistic = [0, 0, 0]
+altered_statistic = [0, 0, 0]
+
+statistic(normal_data, normal_statistic)
+statistic(altered_data, altered_statistic)
+print normal_statistic
+print altered_statistic
+
+
+
+
+
+#  Function for getting every n-th item in fertile
 def get_n_item(item, array=fertile):
     tmp = []
     for x in array:
@@ -39,7 +69,7 @@ def scatter_plot(a, b):
     x_label = nameSet[a]
     y_label = nameSet[b]
 # Create the plot object
-    _, ax = plt.subplots()
+    fig, ax = plt.subplots()
 # create a list of the sizes, here multiplied by 10 for scale
     c = Counter(zip(x_data_n, y_data_n))
     s = [50 * c[(xx, yy)] for xx, yy in zip(x_data_n, y_data_n)]
@@ -57,5 +87,29 @@ def scatter_plot(a, b):
     plt.show()
 
 
+def bar_chart(dataset1, dataset2):
+# Create the plot object
+    fig, ax = plt.subplots()
+
+    index = np.arange(3)
+    bar_width = 0.35
+
+    opacity = 0.4
+    error_config = {'ecolor': '0.3'}
+
+    ax.bar(index, dataset1, bar_width, alpha=opacity, color='b', error_kw=error_config, label='Normal')
+    ax.bar(index + bar_width, dataset2, bar_width, alpha=opacity, color='r', error_kw=error_config, label='Altered')
+
+    ax.set_xlabel('Group')
+    ax.set_ylabel('Percentage')
+    ax.set_xticks(index + bar_width / 2)
+    ax.set_xticklabels(('Disease', 'Trauma', 'Surgical'))
+    ax.legend()
+
+    fig.tight_layout()
+    plt.show()
+
+
+bar_chart(normal_statistic, altered_statistic)
 scatter_plot(2,3)
 scatter_plot(1,8)
