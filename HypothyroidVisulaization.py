@@ -17,4 +17,4 @@ for i in lines:
             temp[x+1] = float(temp[x+1])
     hypo.append(temp)
 
-print hypo
+print len(hypo)

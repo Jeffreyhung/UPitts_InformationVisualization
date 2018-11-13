@@ -25,7 +25,7 @@ for i in lines:
 
     '''
     [00] Result              0 false  1 true
-    [01] Age                 age (integer)
+    [01] Age                 age (int)
     [02] Sex                 0 Female  1 Male
     [03] on thyroxine        0 false  1 true
     [04] query on thyroxine  0 false  1 true
