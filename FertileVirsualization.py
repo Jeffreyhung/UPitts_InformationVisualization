@@ -50,9 +50,6 @@ print normal_statistic
 print altered_statistic
 
 
-
-
-
 #  Function for getting every n-th item in fertile
 def get_n_item(item, array=fertile):
     tmp = []
@@ -109,4 +106,4 @@ def bar_chart(dataset1, dataset2):
 
 
 bar_chart(normal_statistic, altered_statistic)
-scatter_plot(1,8)
+scatter_plot(5,6)
