@@ -83,5 +83,5 @@ def pie_chart(data, labels):
     plt.show()
 
 
-# bar_chart(normal_statistic[1:11:], hypothyroid_statistic[1:11:])
+bar_chart(normal_statistic[1:11:], hypothyroid_statistic[1:11:])
 pie_chart([hypothyroid_statistic[0], 100-hypothyroid_statistic[0]], ['Men', 'Women'])
