@@ -27,27 +27,20 @@ for i in fertile:
 # count the percentage of disease, trauma and surgical
 def statistic (data, target):
     for i in data:
-        if i[2]:
-            target[0] += 1
-
-        if i[3]:
-            target[1] += 1
-
-        if i[4]:
-            target[2] += 1
-
-    for i in range(3):
+        for j in range(2, 5):
+            if i[j]:
+                target[j-2] += 1
+    for i in range(len(target)):
         target[i] = (target[i]*100/len(data))
+    return target
 
 
 # Sum the number of disease, trauma and surgical
 normal_statistic = [0, 0, 0]
 altered_statistic = [0, 0, 0]
 
-statistic(normal_data, normal_statistic)
-statistic(altered_data, altered_statistic)
-print normal_statistic
-print altered_statistic
+normal_statistic = statistic(normal_data, normal_statistic)
+altered_statistic = statistic(altered_data, altered_statistic)
 
 
 #  Function for getting every n-th item in fertile
@@ -106,4 +99,4 @@ def bar_chart(dataset1, dataset2):
 
 
 bar_chart(normal_statistic, altered_statistic)
-scatter_plot(5,6)
+#scatter_plot(5,6)
