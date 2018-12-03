@@ -97,6 +97,15 @@ def bar_chart(dataset1, dataset2):
     fig.tight_layout()
     plt.show()
 
+def pie_chart(data, labels):
+    colors = ['lightskyblue', 'lightcoral']
+    explode = (0.03, 0)  # explode 1st slice
+    # Plot
+    plt.pie(data, explode=explode, labels=labels, autopct='%1.1f%%', colors=colors)
+    plt.axis('equal')
+    plt.show()
 
-bar_chart(normal_statistic, altered_statistic)
-#scatter_plot(5,6)
+
+# pie_chart([len(normal_data), len(altered_data)],['Normal', 'Altered'])
+# bar_chart(normal_statistic, altered_statistic)
+# scatter_plot(5,6)

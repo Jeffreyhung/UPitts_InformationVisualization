@@ -66,7 +66,7 @@ def bar_chart(dataset1, dataset2):
 # Label the axes
     ax.set_ylabel('Percentage')
     ax.set_xticks(index + bar_width / 2)
-    ax.set_xticklabels(('On Thyroxine', 'Query on Thyroxine', 'On Anti-Thyroid', 'Query Hypothroid',
+    ax.set_xticklabels(('On Thyroxine', 'Query on Thyroxine', 'On Anti-Thyroid', 'Query Hypothyroid',
            'Query Hyperthyroid', 'Pregnant', 'Sick', 'Tumor', 'Lithium', 'Goitre'))
     ax.legend()
 # Show chart
@@ -82,6 +82,6 @@ def pie_chart(data, labels):
     plt.axis('equal')
     plt.show()
 
-
+pie_chart([len(normal_data), len(hypothyroid_data)],['Normal', 'Hypothyroid'])
 bar_chart(normal_statistic[1:11:], hypothyroid_statistic[1:11:])
 pie_chart([hypothyroid_statistic[0], 100-hypothyroid_statistic[0]], ['Men', 'Women'])
