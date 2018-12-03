@@ -1,3 +1,5 @@
+Please see [https://github.com/Jeffreyhung/UPitts_InformationVisualization/blob/master/Final%20Project%20Report.pdf] (Final Project Report.pdf) for report with figure
+
 Part 1 – Data Description
 
 <span id="anchor"></span>Data Set 1
