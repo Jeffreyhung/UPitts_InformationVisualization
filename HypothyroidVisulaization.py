@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from collections import Counter
+import seaborn as sns
+
 hypo_file = open("data/HypothyroidProcessed.txt", "r")
 lines = hypo_file.readlines()
 hypo_file.close()
@@ -50,14 +51,11 @@ hypothyroid_statistic = [0]*26
 
 normal_statistic = statistic(normal_data, normal_statistic)
 hypothyroid_statistic = statistic(hypothyroid_data, hypothyroid_statistic)
-print normal_statistic
-print hypothyroid_statistic
 
-
-def bar_chart(dataset1, dataset2):
+def bar_chart(dataset1, dataset2, x_label):
     fig, ax = plt.subplots()
 # parameter setting
-    index = np.arange(10)
+    index = np.arange(len(dataset1))
     bar_width = 0.35
     opacity = 0.4
 # input data
@@ -66,8 +64,7 @@ def bar_chart(dataset1, dataset2):
 # Label the axes
     ax.set_ylabel('Percentage')
     ax.set_xticks(index + bar_width / 2)
-    ax.set_xticklabels(('On Thyroxine', 'Query on Thyroxine', 'On Anti-Thyroid', 'Query Hypothyroid',
-           'Query Hyperthyroid', 'Pregnant', 'Sick', 'Tumor', 'Lithium', 'Goitre'))
+    ax.set_xticklabels(x_label)
     ax.legend()
 # Show chart
     fig.tight_layout()
@@ -82,6 +79,17 @@ def pie_chart(data, labels):
     plt.axis('equal')
     plt.show()
 
+
+def count_chart(dataset):
+    sns.set(style="white")
+    ax = sns.countplot(x = 'age', hue = 'type', data=dataset)
+    plt.show()
+
+
+count_chart({'age': [i[1] for i in hypo], 'type': [i[0] for i in hypo]})
 pie_chart([len(normal_data), len(hypothyroid_data)],['Normal', 'Hypothyroid'])
-bar_chart(normal_statistic[1:11:], hypothyroid_statistic[1:11:])
-pie_chart([hypothyroid_statistic[0], 100-hypothyroid_statistic[0]], ['Men', 'Women'])
+bar_chart(normal_statistic[1:11:], hypothyroid_statistic[1:11:], ('On Thyroxine', 'Query on Thyroxine',
+          'On Anti-Thyroid', 'Query Hypothyroid', 'Query Hyperthyroid', 'Pregnant', 'Sick', 'Tumor', 'Lithium', 'Goitre'))
+pie_chart([hypothyroid_statistic[0], len(hypothyroid_data)-hypothyroid_statistic[0]], ['Men', 'Women'])
+bar_chart(normal_statistic[12:23:2], hypothyroid_statistic[12:23:2],('TSH', 'T3', 'TT4', 'T4U', 'FTI', 'TBG') )
+

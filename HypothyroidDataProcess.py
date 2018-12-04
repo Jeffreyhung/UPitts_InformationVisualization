@@ -3,14 +3,12 @@ lines = hypo_file.readlines()
 hypo_file.close()
 hypo = []
 
-
 # function for turning things into binary
 def organize(temp):
     temp = [tem.replace('f', '0').replace('t', '1').replace('M', '1')
                 .replace('F', '0').replace('y', '1').replace('n', '0')
             for tem in temp]
     return temp
-
 
 # organize each
 for i in lines:
@@ -22,7 +20,6 @@ for i in lines:
             temp[0] = '0'
         temp = organize(temp)
         hypo.append(temp)
-
     '''
     [00] Result              0 false  1 true
     [01] Age                 age (int)
@@ -38,7 +35,6 @@ for i in lines:
     [11] Tumor               0 false  1 true
     [12] Lithium             0 false  1 true
     [13] Goitre              0 false  1 true
-    
     [14] TSH    0 false  1 true
     [15]        Num of TSH / int or '?'
     [16] T3     0 false  1 true

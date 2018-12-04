@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from collections import Counter
+import seaborn as sns
 
 # Read processed file
 fertile_file = open("data/FertilityProcessed.txt", "r")
@@ -98,14 +99,35 @@ def bar_chart(dataset1, dataset2):
     plt.show()
 
 def pie_chart(data, labels):
-    colors = ['lightskyblue', 'lightcoral']
-    explode = (0.03, 0)  # explode 1st slice
+    # colors = ['lightskyblue', 'lightcoral']
+    explode = (0.03, 0, 0, 0)  # explode 1st slice
     # Plot
-    plt.pie(data, explode=explode, labels=labels, autopct='%1.1f%%', colors=colors)
+    plt.pie(data, explode=explode, labels=labels, autopct='%1.1f%%')
     plt.axis('equal')
     plt.show()
 
+season_data = [0,0,0,0]
+for i in fertile:
+    if (i[0] == 0):
+        season_data[0]+=1
+    elif (i[0] ==1):
+        season_data[1]+=1
+    elif (i[0] ==2):
+        season_data[2]+=1
+    else:
+        season_data[3]+=1
 
-# pie_chart([len(normal_data), len(altered_data)],['Normal', 'Altered'])
-# bar_chart(normal_statistic, altered_statistic)
-# scatter_plot(5,6)
+print season_data
+
+def count_chart(dataset):
+    sns.set(style="white")
+    ax = sns.countplot(x = 'Hours',hue='Result', data=dataset)
+    plt.show()
+
+
+pie_chart([len(normal_data), len(altered_data)],['Normal', 'Altered'])
+bar_chart(normal_statistic, altered_statistic)
+scatter_plot(5,6)
+count_chart({'Age': [i[1] for i in fertile], 'Result':[i[9] for i in fertile]})
+pie_chart(season_data,['Winter', 'Spring', 'Summer','Fall'])
+count_chart({'Hours':[i[8] for i in fertile], 'Result':[i[9] for i in fertile]})
